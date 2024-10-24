@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Bases</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h1>Calculadora de Bases</h1>
+        <p>Ingresa un número:</p>
+        <input type="text" id="cadena" placeholder="Escribe aquí">
+        <button id="button">Convertir</button>
+        <div id="resultados_1">
+            <p id="resultado_1"></p>
+        </div>
+        <input type="text" id="cadenaBase1" placeholder="Escribe número base 1">
+        <button id="ButtonSuma">+</button>   
+        <button id="ButtonResta">-</button>
+        <button id="ButtonMultiplicacion">X</button>
+        <button id="ButtonDivision">/</button>
+        
+        <input type="text" id="cadenaBase2" placeholder="Escribe número base 2">
+        
+        <div id="operacion_seleccionada"></div> 
+        <!-- Botón para calcular el resultado -->
+        <button id="buttonResultado">=</button>
+        
+        <p>El valor de la operación es:</p>
+        <div id="resultados_3">
+            <p id="resultado_3"></p>
+        </div>
+
+        <p>O ingresa un archivo .txt:</p>
+        <input type="file" id="fileInput">
+        <button id="button2">Cargar archivo</button>
+        
+        <div id="resultados_2">
+            <p id="resultado_2"></p>
+        </div>
+        <button id="procesarArchivo">Procesar</button>
+        <p>Valor de la sumatoria</p> 
+        <div id="resultado_5">
+            <p id="resultado_sumatoria"></p>
+        </div>
+    </div>
+    
+    <script src="Script.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <!-- Referencia al archivo CSS -->
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body style="background-color:#121212;">
+    <div class="formulario">
+        <h1>Registrarse</h1>
+        <p>¿Tienes alguna cuenta?</p>
+        <p><a href="https://www.example.com" style="color: #f4f7f7;">Iniciar sesión</a></p>
+        <div class="social-buttons">
+            <a href="https://github.com/login" target="_blank">
+                <button class="button3" style="text-align: left;">GitHub</button>
+            </a>
+            <a href="https://accounts.google.com/o/oauth2/auth?client_id=YOUR_GOOGLE_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=email" target="_blank">
+                <button class="button2" style="text-align: left;">Google</button>
+            </a>
+        </div>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/" target="_blank">
+                <button class="button4" style="text-align: left;">Facebook</button>
+            </a>
+            <a href="https://discord.com/login" target="_blank">
+                <button class="button5" style="text-align: left;">Discord</button>
+            </a>
+        </div>
+        <!-- Formulario de registro -->
+        <form id="registrationForm" action="/action_page.php" method="post">
+            <!-- Campos del formulario -->
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required><br>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required><br>
+            <input type="email" id="correo" name="correo" placeholder="Correo" required><br>
+            <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required><br>
+            <p>
+                <input type="checkbox" id="terminos" name="terminos" required>Acepto términos y condiciones
+            </p>
+            <button type="submit" name="submit" class="button">Registrarse</button>
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

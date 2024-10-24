@@ -1,0 +1,115 @@
+* Estilo para botones generales */
+.button {
+    background-color: rgb(29, 22, 94);
+    color: rgb(243, 243, 245);
+    padding: 30px 50px;
+    border-color: #7289da;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Estilos específicos para los botones de redes sociales */
+.button2,
+.button3,
+.button4,
+.button5 {
+    background-color: rgb(17, 78, 233);
+    color: white; /* Color de texto en blanco */
+    padding: 10px 50px 10px 20px; /* Ajusta el padding izquierdo para más espacio */
+    border: 1px solid rgba(11, 183, 235, 0.5);
+    border-width: 5px 5px;
+    cursor: pointer;
+    font-weight: 700;
+    background-repeat: no-repeat;
+    text-align: left; /* Alinea el texto a la izquierda */
+    background-position: calc(100% - 10px) center; /* Ícono alineado a la derecha */
+}
+
+/* Estilos para el botón de Google */
+.button2 {
+    background-color: #db4437;
+    color: white;
+    background-image: url('https://i.blogs.es/dc6737/unnamed/1024_2000.webp');
+    background-size: 50px 50px;
+}
+
+/* Estilos para el botón de GitHub */
+.button3 {
+    background-color: #333;
+    color: white;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg');
+    background-size: 50px 50px;
+}
+
+/* Estilos para el botón de Facebook */
+.button4 {
+    background-color: #1877f2;
+    color: white;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg');
+    background-size: 35px 30px;
+}
+
+/* Estilos para el botón de Discord */
+.button5 {
+    background-color: #7289da;
+    color: white;
+    background-image: url('https://i.blogs.es/e129bf/icono-discord/1024_2000.jpg');
+    background-size: 50px 35px;
+}
+
+/* Estilo para el contenedor del formulario */
+.formulario {   
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #4f7138;
+    border-radius: 20px;
+}
+
+/* Estilos para encabezados y párrafos dentro del formulario */
+.formulario h1,
+.formulario p {
+    text-align: center;
+    color: rgb(14, 13, 13);
+    /* Añadido para mayor contraste en fondo oscuro */
+}
+
+/* Estilos para campos de entrada en el formulario */
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border-color: #0d0d0d;
+}
+
+/* Estilo específico para el botón de enviar en el formulario */
+.formulario button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-color: #0d0d0d;
+    border-radius: 4px;
+    background-color: #f1f3f5;
+    color: rgb(10, 11, 10);
+    cursor: pointer;
+    text-align: center;
+}
+
+.formulario button:hover {
+    background-color: #676464;
+/* Estilo para los contenedores de botones sociales */
+
+}
+
+.social-buttons button {
+    width: 48%;
+    padding: 10px 50px 10px 20px; /* Ajusta el padding izquierdo para más espacio */
+    margin: 5px 0;
+    border-color: #080908;
+    border-radius: 3px;
+    cursor: pointer;
+    background-position: calc(100% - 10px) center; /* Ícono alineado a la derecha */
+    text-align: left; /* Alinea el texto a la izquierda */
+}   

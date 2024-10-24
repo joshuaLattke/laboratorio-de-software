@@ -1,0 +1,92 @@
+
+    /* General */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 40px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        color: #4CAF50;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    /* Contenedor principal */
+    .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    /* Entrada de texto */
+    input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        transition: border 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+    /* Botón de procesar */
+    #procesarBtn {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #procesarBtn:hover {
+        background-color: #45a049;
+    }
+
+    /* Resultados */
+    #resultados {
+        margin-top: 30px;
+    }
+
+    #resultados p {
+        background-color: #e7f3e9;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* Estilo del pie de página */
+    footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #999;
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        color: #4CAF50;
+        text-decoration: none;
+    }

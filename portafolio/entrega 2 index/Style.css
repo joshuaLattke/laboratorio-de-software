@@ -1,0 +1,110 @@
+body{
+	background-color: #ee0c39;
+	font-family: Arial;
+  margin: auto;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    height: 90px;
+    background-color: coral;
+    align-items: center;
+    padding: 20px;
+
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+#contenedor {
+  background-color: #0a2ae0;
+  height: 15vh;
+  width: 30%;
+  margin: 5%;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 3px dashed white; /* Borde con líneas punteadas */
+}
+#container{
+  margin: 150px auto;
+  width: 600px;
+}
+
+table{
+	background-color: rgb(201, 25, 25);
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: #246355;
+	border-bottom: solid 5px #0F362D;
+	color: rgb(255, 255, 255);
+}
+
+tr:nth-child(even){
+	background-color: #4d4c57;
+}
+
+tr:hover td{
+	background-color: #eff157;
+	color: rgb(5, 5, 5);
+}
+#container2{
+  background-color: linear-gradient(135deg, #0a2ae0, #e02aab); /* Gradiente */
+  height: 50vh;
+  width: 30%;
+  margin: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+#container3{
+  background-color: #2bcf16;
+  height: 40vh;
+  width: 30%;
+  margin: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+#container4{
+  background-color: #edfa78;
+  height: 30vh;
+  width: 30vh; /* Igualar altura y anchura para hacer un círculo */
+  margin: 5%;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50%;
+  box-shadow: 0px 4px 10px rgba(253, 253, 253, 0.2);
+}
+#container2, #container3 {
+  height: 400px; /* Ajusta esta altura según tus necesidades */
+}
+
+

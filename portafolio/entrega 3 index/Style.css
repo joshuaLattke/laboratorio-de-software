@@ -1,0 +1,66 @@
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: auto;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    height: 90px;
+    background-color: coral;
+    color: #fff;
+    margin: 0;
+    line-height: 90px;
+}
+
+#container, #container2, #container3, #container4, #contenedor {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    padding: 20px;/*no se quita para visualizar mejor, es para separar mejor la letrar*/
+    width: 80%; /* Using width with padding can sometimes make elements larger than you expect. */
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+thead {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    background-color: #f1f1f1;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

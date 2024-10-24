@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="menu.xslt"?>
+<breakfast_menu>
+    <food>
+        <name>Classic Pancakes</name>
+        <price>$5.95</price>
+        <description>
+            Fluffy pancakes served with butter and maple syrup
+        </description>
+        <calories>500</calories>
+    </food>
+    <food>
+        <name>Blueberry Pancakes</name>
+        <price>$6.95</price>
+        <description>
+            Pancakes filled with fresh blueberries, served with blueberry compote
+        </description>
+        <calories>650</calories>
+    </food>
+    <food>
+        <name>Breakfast Burrito</name>
+        <price>$7.95</price>
+        <description>
+            A flour tortilla filled with scrambled eggs, cheese, sausage, and hash browns, served with salsa
+        </description>
+        <calories>800</calories>
+    </food>
+    <food>
+        <name>Veggie Omelette</name>
+        <price>$7.50</price>
+        <description>
+            Three-egg omelette stuffed with spinach, mushrooms, tomatoes, and feta cheese
+        </description>
+        <calories>550</calories>
+    </food>
+    <food>
+        <name>Avocado Toast</name>
+        <price>$6.25</price>
+        <description>
+            Toasted sourdough topped with smashed avocado, olive oil, and a sprinkle of chili flakes
+        </description>
+        <calories>450</calories>
+    </food>
+    <food>
+        <name>Greek Yogurt Parfait</name>
+        <price>$4.95</price>
+        <description>
+            Layers of creamy Greek yogurt, fresh berries, granola, and honey
+        </description>
+        <calories>300</calories>
+    </food>
+    <food>
+        <name>Breakfast Sandwich</name>
+        <price>$5.95</price>
+        <description>
+            A toasted English muffin with scrambled eggs, cheddar cheese, and bacon or sausage
+        </description>
+        <calories>600</calories>
+    </food>
+    <food>
+        <name>Fresh Fruit Plate</name>
+        <price>$4.50</price>
+        <description>
+            A colorful assortment of seasonal fresh fruits
+        </description>
+        <calories>200</calories>
+    </food>
+    <food>
+        <name>Biscuits and Gravy</name>
+        <price>$5.95</price>
+        <description>
+            Fluffy buttermilk biscuits smothered in homemade sausage gravy
+        </description>
+        <calories>700</calories>
+    </food>
+    <food>
+        <name>Oatmeal Bowl</name>
+        <price>$3.95</price>
+        <description>
+            Warm oatmeal topped with brown sugar, cinnamon, and raisins
+        </description>
+        <calories>350</calories>
+    </food>
+    <drink>
+        <name>Freshly Squeezed Orange Juice</name>
+        <price>$3.00</price>
+        <description>
+            A glass of refreshing freshly squeezed orange juice
+        </description>
+        <calories>110</calories>
+    </drink>
+    <drink>
+        <name>Hot Coffee</name>
+        <price>$2.00</price>
+        <description>
+            A cup of freshly brewed coffee
+        </description>
+        <calories>5</calories>
+    </drink>
+    <drink>
+        <name>Herbal Tea</name>
+        <price>$2.50</price>
+        <description>
+            A selection of organic herbal teas
+        </description>
+        <calories>0</calories>
+    </drink>
+    <drink>
+        <name>Hot Chocolate</name>
+        <price>$3.50</price>
+        <description>
+            Rich hot chocolate topped with whipped cream
+        </description>
+        <calories>250</calories>
+    </drink>
+</breakfast_menu>

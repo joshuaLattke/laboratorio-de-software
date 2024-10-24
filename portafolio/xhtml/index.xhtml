@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrarse</title>
+    <!-- Referencia al archivo CSS -->
+    <link rel="stylesheet" href="Style.css" type="text/css" />
+</head>
+<body style="background-color:#121212;">
+    <div class="formulario">
+        <h1>Registrarse</h1>
+        <p>¿Tienes alguna cuenta?</p>
+        <p><a href="https://www.example.com" style="color: #f4f7f7;">Iniciar sesión</a></p>
+        <div class="social-buttons">
+            <a href="https://github.com/login">
+                <button class="button3">GitHub</button>
+            </a>
+            <a href="https://accounts.google.com/o/oauth2/auth?client_id=YOUR_GOOGLE_CLIENT_ID&amp;redirect_uri=YOUR_REDIRECT_URI&amp;response_type=code&amp;scope=email">
+                <button class="button2">Google</button>
+            </a>
+        </div>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/">
+                <button class="button4">Facebook</button>
+            </a>
+            <a href="https://discord.com/login">
+                <button class="button5">Discord</button>
+            </a>
+        </div>
+        <!-- Formulario de registro -->
+        <form id="registrationForm" action="/action_page.php" method="post">
+            <fieldset>
+                <legend>Registro</legend>
+                <p><label for="nombre">Nombre:</label><input type="text" id="nombre" name="nombre" /></p>
+                <p><label for="apellido">Apellido:</label><input type="text" id="apellido" name="apellido" /></p>
+                <p><label for="correo">Correo:</label><input type="text" id="correo" name="correo" /></p>
+                <p><label for="contraseña">Contraseña:</label><input type="password" id="contraseña" name="contraseña" /></p>
+                <p>
+                    <input type="checkbox" id="terminos" name="terminos" />Acepto términos y condiciones
+                </p>
+                <p><button type="submit" name="submit" class="button">Registrarse</button></p>
+            </fieldset>
+        </form>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
