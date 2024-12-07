@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Visualizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    .controls {
+      margin: 20px;
+    }
+    .controls button,
+    .controls select,
+    .controls input {
+      margin: 0 5px;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .bar-container {
+      display: flex;
+      align-items: flex-end;
+      height: 400px;
+      width: 80%;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .bar {
+      flex: 1;
+      margin: 0 2px;
+      background: #3182bd;
+      transition: height 0.2s, background-color 0.2s;
+    }
+    .bar.compared {
+      background: #ff6384;
+    }
+    .message {
+      margin: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button id="generate">Generate Array</button>
+    <label for="arraySize">Array Size:</label>
+    <input type="number" id="arraySize" value="50" min="5" max="200">
+    <select id="algorithmSelect">
+      <option value="bubble">Bubble Sort</option>
+      <option value="gnome">Gnome Sort</option>
+      <option value="shell">Shell Sort</option>
+    </select>
+    <button id="sort">Sort</button>
+    <button id="next">Next Step</button>
+    <button id="playPause">Play</button>
+  </div>
+  <div class="bar-container" id="barContainer"></div>
+  <div class="message" id="message"></div>
+
+  <script>
+    let array = [];
+    let steps = [];
+    let currentStep = 0;
+    let intervalId = null;
+
+    // Generate random array
+    const generateArray = () => {
+      const arraySize = parseInt(document.getElementById("arraySize").value, 10) || 50;
+      array = Array.from({ length: arraySize }, () => Math.random());
+      steps = [];
+      currentStep = 0;
+      clearInterval(intervalId);
+      intervalId = null;
+      document.getElementById("playPause").textContent = "Play";
+      document.getElementById("message").textContent = "";
+      renderBars(array);
+    };
+
+    // Bubble Sort algorithm
+    const bubbleSort = (arr) => {
+      const steps = [];
+      const data = [...arr];
+
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length - i - 1; j++) {
+          steps.push({ data: [...data], comparedIndices: [j, j + 1] });
+          if (data[j] > data[j + 1]) {
+            [data[j], data[j + 1]] = [data[j + 1], data[j]];
+            steps.push({ data: [...data], comparedIndices: [j, j + 1] });
+          }
+        }
+      }
+
+      return steps;
+    };
+
+    // Gnome Sort algorithm
+    const gnomeSort = (arr) => {
+      const steps = [];
+      const data = [...arr];
+      let index = 0;
+
+      while (index < data.length) {
+        if (index === 0 || data[index] >= data[index - 1]) {
+          index++;
+        } else {
+          [data[index], data[index - 1]] = [data[index - 1], data[index]];
+          steps.push({ data: [...data], comparedIndices: [index, index - 1] });
+          index--;
+        }
+      }
+
+      return steps;
+    };
+
+    // Shell Sort algorithm
+    const shellSort = (arr) => {
+      const steps = [];
+      const data = [...arr];
+      let gap = Math.floor(data.length / 2);
+
+      while (gap > 0) {
+        for (let i = gap; i < data.length; i++) {
+          let temp = data[i];
+          let j = i;
+          while (j >= gap && data[j - gap] > temp) {
+            steps.push({ data: [...data], comparedIndices: [j, j - gap] });
+            data[j] = data[j - gap];
+            j -= gap;
+          }
+          data[j] = temp;
+          steps.push({ data: [...data], comparedIndices: [j, i] });
+        }
+        gap = Math.floor(gap / 2);
+      }
+
+      return steps;
+    };
+
+    // Render bars
+    const renderBars = (data, comparedIndices = []) => {
+      const container = document.getElementById("barContainer");
+      container.innerHTML = "";
+      const maxHeight = container.offsetHeight;
+
+      data.forEach((value, idx) => {
+        const bar = document.createElement("div");
+        bar.style.height = `${value * maxHeight}px`;
+        bar.className = "bar";
+        if (comparedIndices.includes(idx)) {
+          bar.classList.add("compared");
+        }
+        container.appendChild(bar);
+      });
+    };
+
+    // Handle sorting
+    const sortArray = () => {
+      const algorithm = document.getElementById("algorithmSelect").value;
+      steps = algorithm === "bubble" ? bubbleSort(array)
+            : algorithm === "gnome" ? gnomeSort(array)
+            : shellSort(array);
+      currentStep = 0;
+      renderBars(steps[currentStep].data, steps[currentStep].comparedIndices);
+    };
+
+    // Show next step
+    const nextStep = () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        renderBars(steps[currentStep].data, steps[currentStep].comparedIndices);
+      } else {
+        document.getElementById("message").textContent = "Sorting complete!";
+        clearInterval(intervalId);
+        intervalId = null;
+        document.getElementById("playPause").textContent = "Play";
+      }
+    };
+
+    // Play/Pause sorting
+    const playPause = () => {
+      const playPauseButton = document.getElementById("playPause");
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+        playPauseButton.textContent = "Play";
+      } else {
+        playPauseButton.textContent = "Pause";
+        intervalId = setInterval(() => {
+          if (currentStep < steps.length - 1) {
+            nextStep();
+          } else {
+            clearInterval(intervalId);
+            intervalId = null;
+            playPauseButton.textContent = "Play";
+          }
+        }, 500);
+      }
+    };
+
+    // Event listeners
+    document.getElementById("generate").addEventListener("click", generateArray);
+    document.getElementById("sort").addEventListener("click", sortArray);
+    document.getElementById("next").addEventListener("click", nextStep);
+    document.getElementById("playPause").addEventListener("click", playPause);
+
+    // Initial setup
+    generateArray();
+  </script>
+</body>
+</html>

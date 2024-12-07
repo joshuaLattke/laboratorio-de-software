@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador Financiero</title>
+    <link rel="stylesheet" href="Style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="budget">Gestor de Presupuesto</button>
+            <button class="tab-button" data-tab="savings">Simulador de Ahorro</button>
+        </div>
+
+       
+        <!-- Gestor de Presupuesto -->
+        <div id="budget" class="tab-content active">
+            <div class="card">
+                <h2 class="card-title">Gestor de Presupuesto Personal</h2>
+                <img src="https://media.istockphoto.com/id/467580947/es/foto/funny-cerdo-colgar-en-una-valla-collage-de-humor%C3%ADstica.jpg?s=612x612&w=0&k=20&c=8fMQ572BYI4Y55ByMUXkyBw282ioim92Nz0wL-lBKZs=" alt="Libros POO" style="width: 800px; height: auto; margin-left: auto; margin-right: auto; display: block; max-width: 90%">
+                <form id="budget-form">
+                    <div class="form-group">
+                        <label for="income">Ingreso Mensual</label>
+                        <input type="number" id="income" required placeholder="Ingreso mensual">
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Gastos Mensuales</h3>
+                        <div id="expenses-container">
+                            <div class="expense-item">
+                                <input type="text" value="Vivienda" disabled>
+                                <input type="number" name="expense" placeholder="Monto">
+                            </div>
+                            <div class="expense-item">
+                                <input type="text" value="Alimentación" disabled>
+                                <input type="number" name="expense" placeholder="Monto">
+                            </div>
+                            <div class="expense-item">
+                                <input type="text" value="Transporte" disabled>
+                                <input type="number" name="expense" placeholder="Monto">
+                            </div>
+                            <div class="expense-item">
+                                <input type="text" value="Servicios" disabled>
+                                <input type="number" name="expense" placeholder="Monto">
+                            </div>
+                            <div class="expense-item">
+                                <input type="text" value="Entretenimiento" disabled>
+                                <input type="number" name="expense" placeholder="Monto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unexpected">Gastos Inesperados</label>
+                        <input type="number" id="unexpected" placeholder="Fondo para imprevistos">
+                    </div>
+
+                    <button type="submit" class="button">Calcular Presupuesto</button>
+                </form>
+
+                <div class="chart-container">
+                    <canvas id="budget-chart"></canvas>
+                </div>
+                <a href="Diagrama de  proyecto.png" target="_blank" style="color: blue; text-decoration: underline;">
+                    Diagrama
+                </a>
+            </div>
+        </div>
+
+        <!-- Simulador de Ahorro -->
+        <div id="savings" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">Simulador de Ahorro para Metas</h2>
+                <div style="text-align: center; max-width: 100%;">
+                    <img src="https://media.istockphoto.com/id/467580947/es/foto/funny-cerdo-colgar-en-una-valla-collage-de-humor%C3%ADstica.jpg?s=612x612&w=0&k=20&c=8fMQ572BYI4Y55ByMUXkyBw282ioim92Nz0wL-lBKZs=" 
+                         alt="Libros POO" 
+                         style="max-width: 100%; height: auto;">
+                </div>
+                
+                
+                <form id="savings-form">
+                    <div class="form-group">
+                        <label for="goal-name">Nombre de la Meta</label>
+                        <input type="text" id="goal-name" required placeholder="Ej: Auto nuevo, Viaje, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-amount">Monto Objetivo</label>
+                        <input type="number" id="goal-amount" required placeholder="Cantidad total necesaria">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monthly-saving">Ahorro Mensual</label>
+                        <input type="number" id="monthly-saving" required placeholder="Cantidad mensual a ahorrar">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="progressive-increase">Incremento Progresivo Mensual (%)</label>
+                        <input type="number" id="progressive-increase" placeholder="Porcentaje de incremento mensual">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target-date">Fecha Objetivo</label>
+                        <input type="date" id="target-date" required>
+                    </div>
+
+                    <button type="submit" class="button">Calcular Proyección</button>
+                </form>
+
+                <div class="chart-container">
+                    <canvas id="savings-chart"></canvas>
+                </div>
+                <a href="Diagrama de  proyecto.png" target="_blank" style="color: blue; text-decoration: underline;">
+                    Diagrama
+                </a>
+            </div>
+            
+            
+        </div>
+        <script src="Script.js"></script>
+    </div>

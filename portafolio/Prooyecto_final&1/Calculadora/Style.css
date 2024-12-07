@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .controls select, .controls input, .controls button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .controls button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .controls button:disabled {
+    background-color: #aaa;
+  }
+  
+  .chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 400px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+  
+  .bar {
+    flex: 1;
+    background: #3182bd;
+    transition: background 0.2s;
+  }
+  .bar.compared {
+    background: #FF6384;
+  }
+  

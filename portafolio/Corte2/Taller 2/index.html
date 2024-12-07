@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizador de Algoritmos de Ordenamiento</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="controls">
+        <h2>Comparador de Algoritmos de Ordenamiento</h2>
+        <select id="arraySize">
+            <option value="1000">1,000 elementos</option>
+            <option value="10000">10,000 elementos</option>
+            <option value="100000">100,000 elementos</option>
+            <option value="1000000">1,000,000 elementos</option>
+            <option value="10000000">10,000,000 elementos</option>
+        </select>
+        <button onclick="generateArray()">Generar Array</button>
+        <button onclick="runAllSorts()">Ejecutar Todos</button>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="timeChart"></canvas>
+    </div>
+
+    <div class="results" id="results">
+        <h3>Resultados:</h3>
+        <div id="timeResults"></div>
+    </div>
+
+    <script>
+        let originalArray = [];
+        let timeChart = null;
+
+        // Generar array aleatorio
+        function generateArray() {
+            const size = parseInt(document.getElementById('arraySize').value);
+            if (isNaN(size) || size <= 0) {
+                alert('Por favor, ingresa un tamaño válido (mayor que 0).');
+                return;
+            }
+
+            originalArray = Array.from({ length: size }, () => Math.floor(Math.random() * size));
+            document.getElementById('timeResults').innerHTML = 'Array generado con éxito. Listo para ordenar.';
+            if (timeChart) {
+                timeChart.destroy();
+            }
+        }
+
+        // Ejecutar todos los algoritmos usando Web Workers
+        async function runAllSorts() {
+            if (originalArray.length === 0) {
+                alert('Primero genera un array');
+                return;
+            }
+
+            const resultsContainer = document.getElementById('timeResults');
+            resultsContainer.innerHTML = 'Ejecutando algoritmos... por favor espera.';
+
+            const algorithms = ['gnomeSort', 'shellSort', 'bubbleSort'];
+            const results = await Promise.all(
+                algorithms.map(algo => runSortInWorker(algo, originalArray))
+            );
+
+            const timeResults = results
+                .map((res, i) => `<p>${algorithms[i]}: ${res.time.toFixed(2)} ms</p>`)
+                .join('');
+            resultsContainer.innerHTML = timeResults;
+
+            updateChart(results.map((res, i) => ({
+                name: algorithms[i],
+                time: res.time
+            })));
+        }
+
+        // Función para ejecutar un algoritmo en un Web Worker
+        function runSortInWorker(algorithm, array) {
+            return new Promise((resolve) => {
+                const worker = new Worker('worker.js');
+                worker.postMessage({ algorithm, array });
+                worker.onmessage = (e) => {
+                    resolve(e.data);
+                    worker.terminate();
+                };
+            });
+        }
+
+        // Actualizar gráfico
+        function updateChart(results) {
+            const ctx = document.getElementById('timeChart').getContext('2d');
+
+            if (timeChart) {
+                timeChart.destroy();
+            }
+
+            timeChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: results.map(r => r.name),
+                    datasets: [{
+                        label: 'Tiempo de ejecución (ms)',
+                        data: results.map(r => r.time),
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Comparación de Tiempos de Ordenamiento'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

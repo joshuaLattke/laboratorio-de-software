@@ -33,13 +33,14 @@ document.addEventListener("DOMContentLoaded", function() {
         mostrarOperacionSeleccionada();
     });
 
+    // Ejecutar la operación al hacer click en "="
     buttonResultado.addEventListener('click', realizarOperacion);
 });
 
 function mostrarOperacionSeleccionada() {
     const mensaje = `Operación seleccionada: ${operacionSeleccionada}`;
-    console.log(mensaje);  
-    document.getElementById('operacion_seleccionada').innerText = mensaje;  
+    console.log(mensaje);  // Imprimir en la consola
+    document.getElementById('operacion_seleccionada').innerText = mensaje;  // Mostrar en la interfaz
 }
 
 function leerArchivo() {
@@ -72,17 +73,17 @@ function leerDatos() {
         return;
     }
 
-   
+    // Detectar si es un número (puede incluir punto flotante)
     if (/^[0-9]*\.?[0-9]+$/.test(cadena)) {
-        convertirBaseNumericaAString(parseFloat(cadena));  
-         }
-    
-    else if (/^[A-Z0-9]+\.[A-Z0-9]+$/.test(cadena)) {
-        convertirCadena(cadena); 
+        convertirBaseNumericaAString(parseFloat(cadena));  // Convertir número con punto flotante
     }
-   
+    // Detectar si es una cadena de letras con un punto (tratar como base 36)
+    else if (/^[A-Z0-9]+\.[A-Z0-9]+$/.test(cadena)) {
+        convertirCadena(cadena);  // Convierte cadena con punto (como SIMENA.DINAS)
+    }
+    // Detectar si es una cadena de letras sin punto (base 36)
     else if (/^[A-Z0-9]+$/.test(cadena)) {
-        convertirCadena(cadena);  
+        convertirCadena(cadena);  // Convierte cadena sin punto
     } 
     else {
         alert("Entrada no válida. Ingresa un número o letras mayúsculas o una combinación válida.");
@@ -90,37 +91,37 @@ function leerDatos() {
 }
 
 function realizarOperacion() {
-    const cadenaBase1 = document.getElementById('cadenaBase1').value.trim();  
-    const cadenaBase2 = document.getElementById('cadenaBase2').value.trim();  
+    const cadenaBase1 = document.getElementById('cadenaBase1').value.trim();  // Primer número
+    const cadenaBase2 = document.getElementById('cadenaBase2').value.trim();  // Segundo número
 
-    
+    // Verificar que los números no estén vacíos
     if (!cadenaBase1 || !cadenaBase2) {
         alert("Por favor, ingresa ambos números.");
         return;
     }
 
-    
+    // Solicitar la base del primer número
     const base1 = parseInt(prompt("Ingresa la base del primer número (entre 2 y 36)"));
     if (isNaN(base1) || base1 < 2 || base1 > 36) {
         alert("Por favor, ingresa una base válida para el primer número (entre 2 y 36).");
         return;
     }
 
-    
+    // Solicitar la base del segundo número
     const base2 = parseInt(prompt("Ingresa la base del segundo número (entre 2 y 36)"));
     if (isNaN(base2) || base2 < 2 || base2 > 36) {
         alert("Por favor, ingresa una base válida para el segundo número (entre 2 y 36).");
         return;
     }
 
-    
+    // Función para validar si una cadena es válida para una base determinada
     function esNumeroValidoParaBase(cadena, base) {
         const caracteresValidos = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.slice(0, base);
-        const regex = new RegExp(`^[${caracteresValidos}]+$`, 'i');  
+        const regex = new RegExp(`^[${caracteresValidos}]+$`, 'i');  // 'i' para que no distinga entre mayúsculas y minúsculas
         return regex.test(cadena);
     }
 
-    
+    // Validar si los números ingresados son válidos para sus respectivas bases
     if (!esNumeroValidoParaBase(cadenaBase1, base1)) {
         alert(`El número ${cadenaBase1} no es válido para la base ${base1}.`);
         return;
@@ -131,13 +132,13 @@ function realizarOperacion() {
         return;
     }
 
-    
+    // Intentar convertir los números desde sus respectivas bases a base 10
     let numero1, numero2;
     try {
         numero1 = parseInt(cadenaBase1, base1);
         numero2 = parseInt(cadenaBase2, base2);
 
-    
+        // Comprobar si la conversión devolvió NaN
         if (isNaN(numero1) || isNaN(numero2)) {
             throw new Error("Conversión inválida.");
         }
@@ -147,13 +148,13 @@ function realizarOperacion() {
         return;
     }
 
-    
+    // Mostrar los números convertidos para depurar
     console.log(`Número 1 convertido a base 10: ${numero1}`);
     console.log(`Número 2 convertido a base 10: ${numero2}`);
 
     let resultadoBase10;
 
-    
+    // Realizar la operación seleccionada
     switch (operacionSeleccionada) {
         case '+':
             resultadoBase10 = numero1 + numero2;
@@ -176,7 +177,7 @@ function realizarOperacion() {
             return;
     }
 
-    
+    // Mostrar el resultado (siempre en base 10)
     document.getElementById('resultado_3').innerHTML = `Resultado en base 10: ${resultadoBase10}`;
 }
    
@@ -184,13 +185,13 @@ function realizarOperacion() {
 function convertirCadena(cadena) {
     let resultados = '';
 
-    
+    // Verificar si la cadena contiene un punto (número con parte entera y decimal)
     if (cadena.includes('.')) {
         const partes = cadena.split('.');
         for (let base = 2; base <= 36; base++) {
             try {
-                const parteEntera = parseInt(partes[0], base);  
-                const parteDecimal = parseInt(partes[1], base) / Math.pow(base, partes[1].length);  
+                const parteEntera = parseInt(partes[0], base);  // Convertir la parte entera
+                const parteDecimal = parseInt(partes[1], base) / Math.pow(base, partes[1].length);  // Convertir la parte decimal
 
                 if (isNaN(parteEntera) || isNaN(parteDecimal)) {
                     resultados += `Base ${base}: Conversión inválida<br>`;
@@ -203,11 +204,11 @@ function convertirCadena(cadena) {
             }
         }
     } 
-   
+    // Si no hay un punto, se trata como un número entero
     else {
         for (let base = 2; base <= 36; base++) {
             try {
-                const numeroConvertido = parseInt(cadena, base);  
+                const numeroConvertido = parseInt(cadena, base);  // Convertir la cadena a base actual
                 
                 if (isNaN(numeroConvertido)) {
                     resultados += `Base ${base}: Conversión inválida<br>`;
@@ -226,6 +227,7 @@ function convertirCadena(cadena) {
 
 
 
+// Convierte una cadena con letras (base 36) a número decimal
 function convertirBaseNumericaAString(numero) {
     let resultados = '';
 
@@ -240,8 +242,8 @@ function convertirBaseNumericaAString(numero) {
 function convertirNumeroBase(numero, base) {
     if (numero < 0) return '';
     let resultado = '';
-    let cociente = Math.floor(numero); 
-    let parteDecimal = numero - cociente; 
+    let cociente = Math.floor(numero); // Parte entera
+    let parteDecimal = numero - cociente; // Parte decimal
 
     while (cociente > 0) {
         let residuo = cociente % base;
@@ -274,21 +276,27 @@ function procesarArchivoSumatoria() {
 
     reader.onload = function(event) {
     const contenido = event.target.result.trim().split('\n');
-    let sumatoria = 0; 
+    let sumatoria = 0;  // Usar un número normal para manejar decimales
+
     contenido.forEach(linea => {
         const [numero, base, baseSalida] = linea.split(' ').map(part => part.trim());
 
         let base10;
 
+        // Detectar si es un número decimal
         if (numero.includes('.')) {
+            // Para decimales, usar parseFloat() y conversiones manuales
             base10 = parseFloat(parseInt(numero.split('.')[0], parseInt(base, 10))) + 
                      parseFloat("0." + parseInt(numero.split('.')[1], parseInt(base, 10)));
         } else {
+            // Para números enteros, usar parseInt normalmente
             base10 = parseFloat(parseInt(numero, parseInt(base, 10)));
         }
 
+        // Sumar el número en base 10
         sumatoria += base10;
 
+        // Si se requiere convertir a otra base
         if (baseSalida !== "10") {
             const numeroConvertido = base10.toString(parseInt(baseSalida, 10));
             console.log(`Número en base ${base}: ${numero} convertido a base ${baseSalida}: ${numeroConvertido}`);
@@ -297,9 +305,14 @@ function procesarArchivoSumatoria() {
         }
     });
 
+    // Mostrar la sumatoria total en base 10
     document.getElementById('resultado_5').innerHTML = `La sumatoria de los números en base 10 es: ${sumatoria}`;
 };
 
 reader.readAsText(file);
-}         
+}
+function arreglo(){
+    
+}        
+
 

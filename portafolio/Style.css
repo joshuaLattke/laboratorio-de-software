@@ -1,27 +1,83 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(114, 241, 157);
-    flex-direction: column;
-    font-size:large;
-    margin: auto;
-    
-    
-}
-#container{
-    background-color: rgb(153, 101, 250);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 20px; /* Añade espacio arriba del contenedor morado */
+/* Style.css */
+
+/* Reseteo de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#container2{
-    background-color: brown;
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background-color: #0078d7;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+/* Contenedor principal */
+#container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de enlaces */
+#container li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+#container a {
+    display: block;
+    text-decoration: none;
+    color: #0078d7;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover en enlaces */
+#container a:hover {
+    background-color: #0078d7;
+    color: white;
+    border-color: #0056a3;
+}
+
+/* Contenedor del título */
+#container2 {
     padding: 10px;
-    height: 60px;
-    
+    text-align: center;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    #container a {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
 }

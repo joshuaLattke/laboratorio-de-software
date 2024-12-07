@@ -1,0 +1,44 @@
+classDiagram
+    class BudgetManager {
+        - income: float
+        - expenses: List~Expense~
+        - unexpectedExpenses: float
+        + calculateTotalExpenses(): float
+        + calculateSavings(): float
+        + generateBudgetChart(): void
+    }
+
+    class Expense {
+        - category: string
+        - amount: float
+        + getCategory(): string
+        + getAmount(): float
+    }
+
+    class SavingsSimulator {
+        - goalName: string
+        - goalAmount: float
+        - monthlySaving: float
+        - progressiveIncrease: float
+        - targetDate: Date
+        + calculateProjection(): List~float~
+        + generateSavingsChart(): void
+    }
+
+    class ChartGenerator {
+        + createDoughnutChart(data: List, labels: List): Chart
+        + createLineChart(data: List, labels: List): Chart
+    }
+
+    class UIManager {
+        + switchTabs(): void
+        + handleFormSubmit(): void
+        + updateCharts(): void
+    }
+
+    BudgetManager "1" *-- "many" Expense: contains
+    BudgetManager ..> ChartGenerator: uses
+    SavingsSimulator ..> ChartGenerator: uses
+    UIManager ..> BudgetManager: manages
+    UIManager ..> SavingsSimulator: manages
+    https://mermaid.live/edit#pako:eNq9VE1v2zAM_SuCTkmbBOuOPgwoNqzIpcUa7DLowtiMo00WDYrO1hX5Qfsd-2OjnQ-7brbjdJLER76nR9rPNqcCbWbzACl98FAyVC4aXd2Nuf_UIMZ0d2ueD9ftmvsoZk3Axcr_xNF9TXUTQDzFUXATCMRUjXTBR5BxZgU_7jAid_HUB69zRkUvY-F3vmggTKbmlhmehhAIeUuLH71ETGniz-jsAJ4a5RhkCDUcocIoKwyYt5yTXvs56RURU0q0Q57UwJp8c0TOzOH89q-Z3cvxkrAxMlHYoT7yYf1VhR0CexeHfenNeNGYrpIp1cWhfyXKyZaxC0dRU7MjX1xkalsiPn-o28YQpyHfdfqP1rUs_zbvrLyfWmdvnDVX87nu3iwWV3pYDmq8pyjgT8PWpy0W7149PDOf08nWgf2Xocsous8lme9etiddkQTNhviFwGVVB2znEAyEkthLRW0Lf__SkuRcVHfAMHZTwaZmWiseNFCguZ8_oo-QnLUzWyFX4Av9nLseOStbLexsptsC-JuzLu4VB43Q6inmNhNucGaZmnJrsw2EpKemLnQkjv-CE6SG-IWoOoL2fwDdtmC1
